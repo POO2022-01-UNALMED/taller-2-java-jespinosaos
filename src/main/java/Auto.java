@@ -11,12 +11,18 @@ public class Auto {
 	public int cantidadCreados;
 
 	public int cantidadAsientos() {
-		return asientos.length;
+		int numeroAsientos=0;
+		for(int i=0; i<asientos.length;i++) {
+			if(this.asientos[i] instanceof Asiento ) {
+				numeroAsientos++;
+			}
+		}
+		return numeroAsientos;
 	}
 
 	public String verificarIntegridad() {
 		if(this.registro==this.motor.registro) {
-			for(int i=0; i<this.cantidadAsientos();i++) {
+			for(int i=0; i<asientos.length;i++) {
 				if(this.asientos[i] instanceof Asiento && this.asientos[i].registro!=this.registro) {
 					return "Las piezas no son originales";
 
